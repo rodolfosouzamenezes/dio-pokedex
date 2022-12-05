@@ -125,10 +125,32 @@
 }
 
 .pokemon .details img {
-  max-width: 100%;
+  max-width: 90px;
   height: 70px;
 }
 
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.button {
+  width: 100%;
+  padding: .8rem;
+  border-radius: 1rem;
+  background-color: #8C79DB;
+  color: #FFFFFF;
+  text-transform: capitalize;
+  border: none;
+}
+
+.button:hover {
+  background-color: #7e6dc5;
+}
 @media screen and (min-width: 380px) {
   .pokemon-list {
     grid-template-columns: 1fr 1fr;
