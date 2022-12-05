@@ -1,31 +1,25 @@
-const pokemonHTMLList = document.getElementById('pokemonList');
-
-const convertPokemonTypesToHTMLList = (pokemonTypes) => {
-  return pokemonTypes.map((typeSlot) => `<li class="type">${typeSlot.type.name}</li>`).join('')
-}
-
 const convertPokemonToHTMLList = (jsonPokemonList) => {
   const pokemonList = jsonPokemonList.map((pokemon) => (
     `
-    <li class="pokemon">
-      <span class="number">#001</span>
-      
-      <span class="name">${pokemon.name.charAt(0).toUpperCase()
-    + pokemon.name.slice(1)}</span>
+    <li class="pokemon ${pokemon.type}">
+    <span class="number">#${pokemon.number}</span>
+    
+    <span class="name">${pokemon.name}</span>
       <div class="details">
-        <ol class="types">
-          ${convertPokemonTypesToHTMLList(pokemon.types)}
-        </ol>
-        
-        <img src="${pokemon.sprites.other.dream_world.front_default}" alt="${pokemon.name.charAt(0).toUpperCase()
-    + pokemon.name.slice(1)}">
-      </div>
+      <ol class="types">
+      ${pokemon.types.map(type => `<li class="type">${type}</li>`).join('')}
+      </ol>
+      
+      <img src="${pokemon.image}" alt="${pokemon.name}">
+        </div>
     </li>
-  `
+    `
   ))
 
   return pokemonList.join('')
 };
+
+const pokemonHTMLList = document.getElementById('pokemonList');
 
 pokeAPI.getPokemonList().then((responsePokemonList = []) => {
   pokemonHTMLList.innerHTML = convertPokemonToHTMLList(responsePokemonList);

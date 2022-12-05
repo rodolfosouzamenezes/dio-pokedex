@@ -1,7 +1,15 @@
 const pokeAPI = {}
 
+const convertPokeApiDetailToPokemon = (pokeApiDetail) => {
+  const pokemon = new Pokemon(pokeApiDetail);
+
+  return pokemon
+}
+
 pokeAPI.getPokemonDetail = (pokemon) => {
-  return fetch(pokemon.url).then((response) => response.json())
+  return fetch(pokemon.url)
+  .then((response) => response.json())
+  .then(convertPokeApiDetailToPokemon)
 }
 
 pokeAPI.getPokemonList = (offset = 0, limit = 12) => {
