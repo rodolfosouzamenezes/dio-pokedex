@@ -22,3 +22,9 @@ body {
     border-radius: 1rem;
   }
 }
+
+@media screen and (min-width: 2000px) {
+  .content-wrapper {
+    max-width: 1800px;
+  }
+}
