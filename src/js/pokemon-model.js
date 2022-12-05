@@ -1,7 +1,7 @@
 class Pokemon {
   constructor(pokeApiDetail) {
     this.name = pokeApiDetail.name;
-    this.number = pokeApiDetail.order.toString().padStart(3, '0');
+    this.number = pokeApiDetail.id.toString().padStart(3, '0');
     this.image = pokeApiDetail.sprites.other.dream_world.front_default;
 
     const types = pokeApiDetail.types.map(typeSlot => typeSlot.type.name);
