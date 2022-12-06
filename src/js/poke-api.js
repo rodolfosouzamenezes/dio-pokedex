@@ -23,3 +23,9 @@ pokeAPI.getPokemonList = (offset = 0, limit = 12) => {
   .then((pokemonList) => pokemonList)
   .catch((error) => console.log(error))
 }
+
+pokeAPI.getWeaknessToType = (typeUrl) => {
+  return fetch(typeUrl)
+  .then((response) => response.json())
+  .then((type) => type.damage_relations.double_damage_from.map(weakness => weakness.name))
+}
